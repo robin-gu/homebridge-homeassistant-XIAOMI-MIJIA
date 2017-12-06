@@ -1,0 +1,1 @@
+# homebridge-homeassistant-XIAOMI-MIJIA
