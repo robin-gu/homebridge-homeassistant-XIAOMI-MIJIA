@@ -1,4 +1,4 @@
-packaFROM python:alpine
+FROM python:alpine
 
 RUN apk add --no-cache tini
 
