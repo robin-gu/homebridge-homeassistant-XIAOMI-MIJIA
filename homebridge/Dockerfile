@@ -17,7 +17,7 @@ ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
 RUN yarn global add homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
-RUN adduser homebridge
+RUN adduser -D homebridge
 
 
 EXPOSE 5353 51826
