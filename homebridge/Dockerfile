@@ -17,12 +17,14 @@ ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
 RUN yarn global add homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
-RUN adduser -D homebridge
-
+RUN adduser -D homebridge && \
+  mkdir /config && \
+  chown -R homebridge:homebridge /config
+VOLUME /config
 
 EXPOSE 5353 51826
 
 USER homebridge
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["homebridge"]
+CMD ["homebridge","-U","/config"]
