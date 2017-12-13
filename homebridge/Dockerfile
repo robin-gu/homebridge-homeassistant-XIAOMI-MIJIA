@@ -11,11 +11,11 @@ FROM node:alpine
 #   npm install -g --unsafe-perm homebridge-homeassistant
 
 RUN apk add --no-cache tini git python make g++ libffi-dev openssl-dev avahi-compat-libdns_sd avahi-dev openrc dbus \
-  && yarn global add node-gyp
+  && npm install -g node-gyp
 
 ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
-RUN yarn global add homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
+RUN npm install -g homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
 RUN adduser -D homebridge && \
   mkdir /config && \
