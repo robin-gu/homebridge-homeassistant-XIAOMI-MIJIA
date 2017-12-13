@@ -10,7 +10,7 @@ FROM node:alpine
 # RUN npm install -g --unsafe-perm homebridge && \
 #   npm install -g --unsafe-perm homebridge-homeassistant
 
-RUN apk add --no-cache tini python make g++ libffi-dev openssl-dev avahi-daemon avahi-discover avahi-dev libnss-mdns avahi-compat-libdns_sd openrc dbus
+RUN apk add --no-cache tini python make g++ libffi-dev openssl-dev avahi-dev avahi-compat-libdns_sd openrc dbus
 
 ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
