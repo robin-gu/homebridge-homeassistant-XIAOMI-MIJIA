@@ -14,6 +14,8 @@ RUN apk add --no-cache tini git python make g++ libffi-dev openssl-dev avahi-com
 
 ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
+RUN npm install -g node-gyp
+RUN npm install -g --unsafe-perm homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
 RUN adduser -D homebridge && \
   mkdir /config && \
@@ -21,10 +23,8 @@ RUN adduser -D homebridge && \
 VOLUME /config
 
 EXPOSE 5353 51826
-RUN npm install -g node-gyp
-USER homebridge
 
-RUN npm install -g homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
+USER homebridge
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["homebridge","-U","/config"]
