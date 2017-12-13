@@ -21,9 +21,9 @@ RUN adduser -D homebridge && \
 VOLUME /config
 
 EXPOSE 5353 51826
-
-USER homebridge
 RUN npm install -g node-gyp
+USER homebridge
+
 RUN npm install -g homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
 ENTRYPOINT ["/sbin/tini", "--"]
