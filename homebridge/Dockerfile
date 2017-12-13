@@ -14,13 +14,16 @@ RUN apk add --no-cache tini python make g++ libffi-dev openssl-dev avahi-daemon 
 
 ENV HOMEBRIDGE_VERSION 0.4.33
 ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
-RUN npm install -g node-gyp
-RUN npm install -g --unsafe-perm homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
+RUN yarn global add node-gyp
+RUN yarn global add homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
 RUN adduser -D homebridge && \
   mkdir /config && \
   chown -R homebridge:homebridge /config
 VOLUME /config
+
+RUN mkdir -p /var/run/dbus
+VOLUME /var/run/dbus
 
 EXPOSE 5353 51826
 
