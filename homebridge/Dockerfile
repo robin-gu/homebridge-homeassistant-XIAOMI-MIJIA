@@ -22,7 +22,7 @@ ENV HOMEBRIDGE_HOMEASSISTANT_VERSION 3.0.2
 RUN yarn global add node-gyp
 RUN yarn global add homebridge@$HOMEBRIDGE_VERSION homebridge-homeassistant@$HOMEBRIDGE_HOMEASSISTANT_VERSION
 
-RUN adduser -D homebridge && \
+RUN adduser -m --disabled-password homebridge && \
   mkdir /config && \
   chown -R homebridge:homebridge /config
 VOLUME /config
